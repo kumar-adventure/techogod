@@ -45,3 +45,5 @@ end
 # Use debugger
 gem 'debugger', group: [:development, :test]
 gem 'devise'
+gem 'quiet_assets'
+gem 'omniauth-facebook'

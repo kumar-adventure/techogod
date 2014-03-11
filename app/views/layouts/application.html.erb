@@ -1,14 +1,29 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Techogod</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+	<head>
+	  <title>Techogod</title>
+	  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+	  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+	  <%= csrf_meta_tags %>
+	</head>
+	<body>
+	  <%= render :partial => "layouts/header" %>
+	  <div class="margin_top">
+	    <div class="message_div_margin">
+	      <%if notice.present? %>
+	        <div class="alert_margin alert alert-success">
+	          <a data-dismiss="alert" class="close">×</a>
+	          <div id="flash_notice"><%= notice %>.</div>
+	        </div>
+	      <% elsif alert.present? %>
+	        <div class="alert alert-error">
+	          <a data-dismiss="alert" class="close">×</a>
+	          <div id="flash_alert"><%= alert %>.</div>
+	        </div>
+	      <% end %>
+	    </div>
+	    <%= yield %>
+	  </div>
 
-<%= yield %>
-
-</body>
+	</body>
 </html>
