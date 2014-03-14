@@ -14,9 +14,12 @@ class AuthenticationsController < ApplicationController
 			# Authentication not found, thus a new user.
 			user = User.new
 			user.apply_omniauth(auth)
+			user.skip_confirmation_notification!
 			if user.save(:validate => false)
+			user.confirm!
 			flash[:notice] = "Account created and signed in successfully."
-			sign_in_and_redirect(:user, user)
+			sign_in(:user, user)
+			redirect_to root_url
 			else
 			flash[:error] = "Error while creating a user account. Please try again."
 			redirect_to root_url
