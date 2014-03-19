@@ -5,6 +5,24 @@
 <meta charset="utf-8" />
 <title>Business Solutions</title>
 <link rel="stylesheet" type="text/css" href="style.css" media="all" />
+<script
+src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false">
+</script>
+<script>
+function initialize()
+{
+var lat =  <%= @lat %>
+var  lang = <%= @lang %>
+var mapProp = {
+  center:new google.maps.LatLng(lat,lang),
+  zoom:10,
+  mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
 </head>
 <body>
 	<div id="header">
@@ -102,8 +120,11 @@
 				</li>
 			</ul>	
 		</div>
-		</div>
-	</div>
+		
+	
+	
+	
+	<div id="googleMap" style="width:500px;height:380px;"></div></div></div>
 	<div id="footer">
 		<div>
 			<div>
