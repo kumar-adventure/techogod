@@ -6,10 +6,9 @@
 
       <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
         <%= devise_error_messages! %>
-        <div>Account Type</div>
         <div>
-          <%= f.radio_button :account_type_id, 1 %>Learn
-          <%= f.radio_button :account_type_id, 2 %>Teach
+          <%= f.select :account_type_id, [["Select Account Type", ""], ["Learn", 1], ["Teach", 2]] %>
+          <%#= f.select(:account_type_id, options_for_select([["Select Account Type", ""], ["Learn", 1], ["Teach", 2]], :selected => resource.account_type_id)) %>
         </div><br/> 
         <div><%= f.label :first_name %>
         <%= f.text_field :first_name %></div>

@@ -6,7 +6,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   belongs_to :account_type
   has_many :authentications, :dependent => :destroy
-
+  has_many :user_preferences
+  has_many :afinities, through: :user_preferences
+  
   validates_presence_of :first_name, :last_name, :account_type_id
 
 
@@ -18,5 +20,10 @@ class User < ActiveRecord::Base
 		# save user info from facebook details.
     authentications.build(:provider => auth['provider'], :uid => auth['uid'], :token => auth['credentials']['token'])
 	end
+
+  def full_name
+    return email if first_name.blank? && last_name.blank?
+    first_name + " " + last_name
+  end
 	
 end

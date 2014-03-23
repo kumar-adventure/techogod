@@ -145,9 +145,8 @@ li {
 .like_image img{
   width:60px;
 }
-.user_list{
-  margin-left: -25%;
-  margin-right: 50%;
+.result{
+  margin-left: 34%;
 }
 .row_padding{
   padding: 20px;
@@ -160,4 +159,10 @@ li {
 }
 .username:first-letter{
   text-transform: uppercase;
+}
+.crrent_list_padding{
+  padding: 8px
+}
+.user-filter{
+  display: none;
 }

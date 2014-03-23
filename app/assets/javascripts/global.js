@@ -13,6 +13,12 @@ $(document).on('keyup','#search_options_container', function(){
   search_items(search_keyword_trim);
 });
 
+function changeFunc() {
+  var selectBox = document.getElementById("selectBox");
+  var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+  
+ }
+
 function search_items(search_keyword){
   $.ajax({
     type :'get',
