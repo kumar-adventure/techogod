@@ -16,9 +16,13 @@
                   :class => "btn-header" %>
             </li>
             <li>
-              <%= link_to 'User Preference', preferences_path, 
+              <%= link_to 'Search-User', preferences_path, 
                   :class => "btn-header" %>
             </li>
+            <li>
+              <%= link_to 'Preference', set_preference_preferences_path, 
+                  :class => "btn-header" %>
+            </li>            
             <li>
               <%= link_to 'Log out', destroy_user_session_path, 
                   :method => :delete, :class => "btn-header" %>

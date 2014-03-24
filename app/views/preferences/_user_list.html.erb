@@ -5,11 +5,11 @@
     </div>
     <div class="span7">
       <div class="username">
-        <%= link_to user_list.full_name, user_path(user_list.id) %>
+        <%= link_to user_list.full_name, user_profile_path(user_list.id) %>
       </div>
     </div>
     <div class="span3">
-      <%=link_to 'View Profile', user_path(user_list.id), :class => "btn" %>
+      <%=link_to 'View Profile', user_profile_path(user_list.id), :class => "btn" %>
     </div>        
   </div>
 </div>

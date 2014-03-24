@@ -25,5 +25,9 @@ class User < ActiveRecord::Base
     return email if first_name.blank? && last_name.blank?
     first_name + " " + last_name
   end
+
+  def afinity?(afinity)
+    afinities.where(name: afinity.name).first.present?
+  end
 	
 end

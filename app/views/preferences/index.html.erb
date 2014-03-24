@@ -1,4 +1,4 @@
-<%= form_for :user_preference, url: search_user_preferences_path, remote: true do |f| %>
+<%= form_for :user_preference, url: search_user_preferences_path, remote: true, html: {class: "search-user"} do |f| %>
 	<div class="row-fluid">
 	  <div class="span12">
 	    <div class="span4"></div>
@@ -46,10 +46,14 @@
 
 <script type="text/javascript">
   $(document).on("change", "#user_preference_name", function(){
+  	$(".result").hide();
     if ($(this).val() != ''){
     	$(".user-filter").show();
     }else{
     	$(".user-filter").hide();
     }
   });
+  $("form.search-user").submit(function(){
+  	$(".result").hide();
+  })
 </script>
