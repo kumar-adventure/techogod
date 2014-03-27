@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    result = request.location
+    #result = request.location
     if Rails.env == "production"
     @lat = result.latitude
     @lang = result.longitude

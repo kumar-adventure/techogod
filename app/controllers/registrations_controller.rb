@@ -24,9 +24,16 @@ class RegistrationsController < Devise::RegistrationsController
   def update
     self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
     prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
-
-    if update_resource(resource, user_parameters)
-      yield resource if block_given?
+    is_updated = false
+    if current_user.authentications.blank?
+      if update_resource(resource, user_parameters)
+        is_updated = true
+        yield resource if block_given?
+      end  
+    else
+      is_updated = true if resource.update_without_password(user_parameters)
+    end
+    if is_updated  
       if is_flashing_format?
         flash_key = update_needs_confirmation?(resource, prev_unconfirmed_email) ?
           :update_needs_confirmation : :updated
@@ -37,11 +44,17 @@ class RegistrationsController < Devise::RegistrationsController
     else
       clean_up_passwords resource
       respond_with resource
-    end
-  end  
+    end  
+  end    
   
   private
   def user_parameters
-    params.require(:user).permit(:first_name, :last_name, :password, :password_confirmation, :email, :account_type_id, :current_password)
+    unless current_user.authentications.blank?
+      params.require(:user).permit(:first_name, :last_name, :password, :password_confirmation, :email, :account_type_id, :current_password)
+    else  
+      params.require(:user).permit(:first_name, :last_name, :email, :account_type_id)
+    end  
   end
-end
+  
+end  
+
