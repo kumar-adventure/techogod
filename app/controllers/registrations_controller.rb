@@ -49,7 +49,7 @@ class RegistrationsController < Devise::RegistrationsController
   
   private
   def user_parameters
-    unless current_user.authentications.blank?
+    if current_user.authentications.blank?
       params.require(:user).permit(:first_name, :last_name, :password, :password_confirmation, :email, :account_type_id, :current_password)
     else  
       params.require(:user).permit(:first_name, :last_name, :email, :account_type_id)
