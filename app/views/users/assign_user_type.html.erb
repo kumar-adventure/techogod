@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!-- Template by freewebsitetemplates.com -->
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Business Solutions</title>
+<link rel="stylesheet" type="text/css" href="style.css" media="all" />
+<script
+src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false">
+</script>
+</head>
+<body>
+	<div id="header">
+			<div id="logo">
+				<a href="index.html"><%= image_tag "logo.jpg" %></a>		
+			</div>		
+			<ul>
+			</ul>
+	</div>
+	<div id="body">
+	  <div class="header">
+			<div class='span4'>
+				<%=form_tag(create_user_type_users_path, method: :post) do%>
+			    <%= select_tag 'account_type_id', options_for_select([["Select Account Type", ""], ["Learn", 1], ["Teach", 2]]) %>
+          <%= submit_tag "Submit" %>
+			  <% end %>
+			</div>
+		</div>			
+	</div>
+</body>
+</html>
